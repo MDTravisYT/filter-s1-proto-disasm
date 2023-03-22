@@ -7,10 +7,10 @@ ObjAniTest:
 		jmp	off_111D0(pc,d1.w)
 ; ---------------------------------------------------------------------------
 
-off_111D0:	dc.w loc_111D8-off_111D0, loc_11202-off_111D0, loc_11286-off_111D0, loc_11286-off_111D0
+off_111D0:	dc.w ObjAniTest_Init-off_111D0, loc_11202-off_111D0, loc_11286-off_111D0, loc_11286-off_111D0
 ; ---------------------------------------------------------------------------
 
-loc_111D8:
+ObjAniTest_Init:
 		addq.b	#2,act(a0)
 		move.b	#$12,yrad(a0)
 		move.b	#9,xrad(a0)
@@ -22,7 +22,7 @@ loc_111D8:
 loc_11202:
 		bsr.w	sub_11210
 		bsr.w	Sonic_DynTiles
-		jmp	DisplaySprite
+		jmp	(DisplaySprite).l
 ; ---------------------------------------------------------------------------
 
 sub_11210:
@@ -71,9 +71,9 @@ loc_11264:
 		move.b	#0,ani(a0)
 
 loc_1127E:
-		jsr	Sonic_Animate
+		jsr	(Sonic_Animate).l
 		rts
 ; ---------------------------------------------------------------------------
 
 loc_11286:
-		jmp	DeleteObject
+		jmp	(DeleteObject).l
